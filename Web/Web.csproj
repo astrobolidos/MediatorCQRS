@@ -6,6 +6,7 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'MediatorCQRS' ">
     <StartAction>Project</StartAction>
+    <ExternalConsole>true</ExternalConsole>
     <ApplicationURL>https://localhost:5001;http://localhost:5000</ApplicationURL>
     <LaunchUrl>/api/welcome</LaunchUrl>
   </PropertyGroup>
