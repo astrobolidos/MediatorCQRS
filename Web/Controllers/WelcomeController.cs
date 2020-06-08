@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+using core.Queries;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Web.Controllers
 {
@@ -6,10 +10,14 @@ namespace Web.Controllers
     [Route("/api/[controller]")]
     public class WelcomeController : ControllerBase
     {
-        [HttpGet]
-        public string Get()
+        private IMediator _mediator;
+        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+
+
+        [HttpGet("{id}")]
+        public async Task<WelcomeMessage> Get(int id)
         {
-            return "Welcome stranger";
+            return await Mediator.Send(new WelcomeMessageQuery { MessageId = id });
         }
     }
 }
