@@ -1,6 +1,5 @@
 using System.Net;
 using System.Threading.Tasks;
-using core.Queries;
 using FluentAssertions;
 using NUnit.Framework;
 using Tests;
